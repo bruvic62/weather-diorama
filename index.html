@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Weather</title>
+<link rel="manifest" href="manifest.json">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 setInterval(() => {
@@ -1909,5 +1910,10 @@ function attachHourCellLoopHover(hours) {
 <div id="crestBadge">
   <img src="bruvic-emblem.png" alt="Bruvic">
 </div>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </body>
 </html>
