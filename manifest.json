@@ -1,6 +1,6 @@
 {
-  "name": "Weather Diorama",
-  "short_name": "Weather",
+  "name": "Livecast Weather 3D",
+  "short_name": "Livecast Weather 3D",
   "description": "Interactive 3D weather visualization",
   "start_url": "index.html",
   "display": "standalone",
