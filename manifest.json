@@ -1,0 +1,10 @@
+{
+  "name": "Weather Diorama",
+  "short_name": "Weather",
+  "description": "Interactive 3D weather visualization",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": []
+}
