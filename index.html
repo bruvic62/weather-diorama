@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Weather</title>
-<link rel="manifest" href="manifest.json">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 setInterval(() => {
@@ -139,7 +138,6 @@ setInterval(() => {
   pointer-events: none;
   z-index: 0;
 }
-
 #hourlyPanel::after {
   content: "";
   position: absolute;
@@ -154,183 +152,15 @@ setInterval(() => {
   pointer-events: none;
   z-index: 0;
 }
-
 #hourlyPanel > * {
   position: relative;
   z-index: 1;
 }
-
 #hourlyPanel.visible {
   display: flex;
   opacity: 1;
 }
 
-#hourlyPanel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(2px) saturate(1.25);
-  -webkit-backdrop-filter: blur(2px) saturate(1.25);
-  filter: url(#glassRefraction);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.12) 0%,
-    rgba(255,255,255,0.03) 35%,
-    transparent 55%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel > * {
-  position: relative;
-  z-index: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-
-#hourlyPanel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(2px) saturate(1.25);
-  -webkit-backdrop-filter: blur(2px) saturate(1.25);
-  filter: url(#glassRefraction);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.12) 0%,
-    rgba(255,255,255,0.03) 35%,
-    transparent 55%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel > * {
-  position: relative;
-  z-index: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-
-#hourlyPanel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(2px) saturate(1.25);
-  -webkit-backdrop-filter: blur(2px) saturate(1.25);
-  filter: url(#glassRefraction);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.12) 0%,
-    rgba(255,255,255,0.03) 35%,
-    transparent 55%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel > * {
-  position: relative;
-  z-index: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-
-#hourlyPanel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.055);
-  backdrop-filter: blur(3px) saturate(1.3);
-  -webkit-backdrop-filter: blur(3px) saturate(1.3);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel > * {
-  position: relative;
-  z-index: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-
-#hourlyPanel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(2px) saturate(1.25);
-  -webkit-backdrop-filter: blur(2px) saturate(1.25);
-  pointer-events: none;
-  z-index: 0;
-}
-
-#hourlyPanel > * {
-  position: relative;
-  z-index: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-
-#hourlyPanel.visible {
-  display: flex;
-  opacity: 1;
-}
-  #hourlyPanel.visible {
-    display: flex;
-    opacity: 1;
-  }
   .hourly-inner {
     display: flex;
     gap: 18px;
@@ -438,8 +268,8 @@ setInterval(() => {
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   #crestBadge:hover {
-    width: 100px;
-    height: 130px;;
+    width: 220px;
+    height: 280px;
     opacity: 1;
     border-radius: 12px;
   }
@@ -726,7 +556,7 @@ scene.add(new THREE.Mesh(
   new THREE.ShaderMaterial({
     uniforms: skyU, side: THREE.BackSide, depthWrite: false,
     vertexShader: `varying vec3 vDir; void main(){vDir=normalize(position);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
-    fragmentShader: `varying vec3 vDir;uniform vec3 uTop,uMid,uBot,uSunDir,uSunColor;uniform float uSunGlow;void main(){vec3 d=normalize(vDir);float h=clamp(d.y,-0.2,1.0);vec3 col;if(h>0.5)col=mix(uMid,uTop,(h-0.5)*2.0);else if(h>0.0)col=mix(uBot,uMid,h*2.0);else col=uBot;vec3 sd=normalize(uSunDir);float dp=max(dot(d,sd),0.0);float sun=pow(dp,800.0)*6.0;float halo=pow(dp,6.0)*uSunGlow;col+=uSunColor*(sun+halo);float hb=pow(1.0-abs(h),3.0)*0.12;col+=uSunColor*hb*max(0.0,sd.y);gl_FragColor=vec4(col,1.0);}`
+    fragmentShader: `varying vec3 vDir;uniform vec3 uTop,uMid,uBot,uSunDir,uSunColor;uniform float uSunGlow;void main(){vec3 d=normalize(vDir);float h=clamp(d.y,-0.2,1.0);vec3 col;if(h>0.5)col=mix(uMid,uTop,(h-0.5)*2.0);else if(h>0.0)col=mix(uBot,uMid,h*2.0);else col=uBot;vec3 sd=normalize(uSunDir);float dp=max(dot(d,sd),0.0);float sun=0.0;float halo=pow(dp,6.0)*uSunGlow;col+=uSunColor*(sun+halo);float hb=pow(1.0-abs(h),3.0)*0.12;col+=uSunColor*hb*max(0.0,sd.y);gl_FragColor=vec4(col,1.0);}`
   })
 ));
 
@@ -783,7 +613,8 @@ moonTexture.colorSpace = THREE.SRGBColorSpace;
 const moonUniforms = {
   uTex:{value: moonTexture},
   uPhase:{value: 0.5},
-  uOpacity:{value: 0.0}
+  uOpacity:{value: 0.0},
+  uTermAngle:{value: 0.0}
 };
 const moonMat = new THREE.ShaderMaterial({
   uniforms: moonUniforms,
@@ -795,8 +626,14 @@ const moonMat = new THREE.ShaderMaterial({
     uniform sampler2D uTex;
     uniform float uPhase;
     uniform float uOpacity;
+    uniform float uTermAngle;
     void main(){
+      
+      // Rotate coordinates so terminator tilts correctly for observer location
+      float ca = cos(uTermAngle);
+      float sa = sin(uTermAngle);
       vec2 p = vUv - 0.5;
+      p = vec2(ca * p.x - sa * p.y, sa * p.x + ca * p.y);
       float r = length(p);
       if (r > 0.46) discard;
       float edgeSoft = smoothstep(0.46, 0.445, r);
@@ -805,27 +642,37 @@ const moonMat = new THREE.ShaderMaterial({
       vec3 col = texture2D(uTex, sampleUv).rgb;
 
       // Illumination fraction: 0=new, 0.5=quarter, 1=full
+      // Illumination fraction 0 = new, 1 = full
       float ill = (1.0 - cos(6.2831853 * uPhase)) * 0.5;
 
-      // Terminator x-position at height p.y
+      // p is already rotated by uTermAngle, so a simple vertical
+      // boundary now points toward the real sun
       float discY = sqrt(max(0.0, 0.25 - p.y * p.y));
       float termX = (1.0 - 2.0 * ill) * discY;
+      float d = p.x - termX;
 
-      // Waxing (phase < 0.5): lit side is RIGHT (positive x)
-      // Waning (phase > 0.5): lit side is LEFT (negative x)
-      bool waxing = uPhase < 0.5;
-      float boundary = waxing ? termX : -termX;
-      float d = waxing ? (p.x - boundary) : (boundary - p.x);
-      float lit = smoothstep(-0.006, 0.006, d);
+      // Soft terminator
+      float lit = smoothstep(-0.045, 0.045, d);
 
-      col *= mix(0.15, 1.0, lit);
+      // Gentle 3D shading on the lit side
+      float shading = mix(0.70, 1.0, lit) * (0.82 + 0.18 * (1.0 - r * 1.5));
+
+      // Dark side stays visible + faint cool backside glow
+      vec3 darkSide = col * 0.10 + vec3(0.035, 0.045, 0.08);
+      vec3 litSide  = col * shading;
+      col = mix(darkSide, litSide, lit);
+
+      // Subtle limb glow so it reads as a sphere
+      float limb = smoothstep(0.40, 0.48, r);
+      col += vec3(0.025, 0.03, 0.045) * limb * (1.0 - lit * 0.65);
+
       float alpha = edgeSoft * uOpacity;
       gl_FragColor = vec4(col, alpha);
     }
   `
 });
 const moonGroup = new THREE.Group();
-const moonDisc = new THREE.Mesh(new THREE.PlaneGeometry(95, 95), moonMat);
+const moonDisc = new THREE.Mesh(new THREE.PlaneGeometry(128, 128), moonMat);
 moonGroup.add(moonDisc); moonDisc.renderOrder = 10; moonGroup.renderOrder = 10;
 
 const haloCanvas = document.createElement('canvas');
@@ -840,11 +687,11 @@ hctx.fillRect(0, 0, 256, 256);
 const haloTex = new THREE.CanvasTexture(haloCanvas);
 haloTex.colorSpace = THREE.SRGBColorSpace;
 const moonHalo = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false }));
-moonHalo.scale.set(165, 165, 1);
+moonHalo.scale.set(210, 210, 1);
 moonGroup.add(moonHalo);
 scene.add(moonGroup);
 
-const moon = { material: { get opacity() { return moonUniforms.uOpacity.value; }, set opacity(v) { moonUniforms.uOpacity.value = v; moonHalo.material.opacity = v * 0.6; } } };
+const moon = { material: { get opacity() { return moonUniforms.uOpacity.value; }, set opacity(v) { moonUniforms.uOpacity.value = v; moonHalo.material.opacity = v * 0.75; } } };
 
 // SUN
 const sunCanvas = document.createElement('canvas');
@@ -988,7 +835,8 @@ function makeRain(count, intensity){
   const mat = new THREE.ShaderMaterial({transparent:true,depthWrite:false,
     uniforms:{ uSize:{value:cfg.size}, uOpacity:{value:cfg.opacity} },
     vertexShader:`uniform float uSize;void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=uSize*(300.0/-mv.z);}`,
-    fragmentShader:`uniform float uOpacity;void main(){vec2 uv=gl_PointCoord-0.5;float d=smoothstep(0.4,0.0,abs(uv.x)+abs(uv.y)*0.3);gl_FragColor=vec4(0.55,0.62,0.68,d*uOpacity);}`
+    fragmentShader:`uniform float uOpacity;
+    uniform float uTermAngle;void main(){vec2 uv=gl_PointCoord-0.5;float d=smoothstep(0.4,0.0,abs(uv.x)+abs(uv.y)*0.3);gl_FragColor=vec4(0.55,0.62,0.68,d*uOpacity);}`
   });
   const p = new THREE.Points(geo, mat);
   p.userData.tick=()=>{const a=geo.attributes.position.array;for(let i=0;i<count;i++){a[i*3+1]-=vel[i];a[i*3]+=vel[i]*0.15;if(a[i*3+1]<-15){const ang=angMin+Math.random()*(angMax-angMin);a[i*3+1]=5+dist[i]*Math.tan(ang);a[i*3]=(Math.random()-0.5)*100;}}geo.attributes.position.needsUpdate=true;};
@@ -1028,8 +876,50 @@ function updateCelestial(hourFrac, kind, srFrac, ssFrac){
   const dayLength = ss - sr;
   const dayT = Math.max(0, Math.min(1, (t - sr) / dayLength));
   const elevation = isNight ? -0.3 : Math.sin(dayT * Math.PI) * 0.9;
-  const azimuth = Math.PI * 0.75;
-  const sd = new THREE.Vector3(Math.cos(azimuth)*Math.cos(elevation), Math.sin(elevation), Math.sin(azimuth)*Math.cos(elevation));
+
+  // Real solar azimuth from latitude / longitude / time
+  // Elevation curve, sunrise/sunset timing, and 25-second horizon
+  // effect are left completely unchanged.
+  let azimuth = Math.PI * 0.75; // fallback
+  if (window.currentGeo && window.currentGeo.latitude != null) {
+    const lat = window.currentGeo.latitude;
+    const lon = window.currentGeo.longitude;
+    const now = new Date();
+    const rad = Math.PI / 180;
+
+    // Day of year
+    const start = new Date(now.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((now - start) / 86400000);
+
+    // Solar declination (approximate)
+    const decl = 23.45 * Math.sin(rad * (360 / 365) * (dayOfYear - 81));
+
+    // Hour angle from longitude + UTC
+    const utcHours = now.getUTCHours() + now.getUTCMinutes() / 60 + now.getUTCSeconds() / 3600;
+    const localSolarTime = utcHours + lon / 15;
+    const hourAngle = (localSolarTime - 12) * 15 * rad;
+
+    const latR = lat * rad;
+    const decR = decl * rad;
+
+    // Azimuth (radians). 0 = north, increases eastward.
+    // Converted to the scene's existing convention below.
+    const az = Math.atan2(
+      -Math.sin(hourAngle),
+      Math.tan(decR) * Math.cos(latR) - Math.sin(latR) * Math.cos(hourAngle)
+    );
+
+    // Map into the same coordinate system the original code used
+    // (original fixed value was ~0.75π). Offset keeps the sun on
+    // the expected side of the sky while making it location-correct.
+    azimuth = az + Math.PI; // align with existing scene orientation
+  }
+
+  const sd = new THREE.Vector3(
+    Math.cos(azimuth) * Math.cos(elevation),
+    Math.sin(elevation),
+    Math.sin(azimuth) * Math.cos(elevation)
+  );
   skyU.uSunDir.value.copy(sd);
   cloudU.uSunDir.value.copy(sd);
 
@@ -1123,6 +1013,30 @@ function updateCelestial(hourFrac, kind, srFrac, ssFrac){
     window.moonBaseOpacity = 0.95 * (1 - cloudObscuration) * moonFadeFrac;
     moon.material.opacity = window.moonBaseOpacity;
     moonUniforms.uPhase.value = lunarPhase(new Date());
+
+      // Geometric terminator angle from actual sun direction + moon position.
+      // This makes the shadow correct for any city / any time of night.
+      (function() {
+        const moonPos = moonGroup.position.clone();
+        const sunDir  = skyU.uSunDir.value.clone().normalize();
+        const viewDir = camera.position.clone().sub(moonPos).normalize();
+
+        // Project sun direction onto the plane of the moon disc (facing camera)
+        const proj = sunDir.clone().sub(viewDir.clone().multiplyScalar(sunDir.dot(viewDir)));
+        if (proj.lengthSq() < 1e-8) {
+          moonUniforms.uTermAngle.value = 0;
+          return;
+        }
+        proj.normalize();
+
+        // Local axes on the disc
+        const right = new THREE.Vector3().crossVectors(viewDir, camera.up).normalize();
+        const up    = new THREE.Vector3().crossVectors(right, viewDir).normalize();
+
+        // Angle of the projected sun vector in disc space
+        const angle = Math.atan2(proj.dot(up), proj.dot(right));
+        moonUniforms.uTermAngle.value = angle;
+      })();
   } else {
     moon.material.opacity = 0;
     window.moonBaseOpacity = 0;
@@ -1910,10 +1824,5 @@ function attachHourCellLoopHover(hours) {
 <div id="crestBadge">
   <img src="bruvic-emblem.png" alt="Bruvic">
 </div>
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-</script>
 </body>
 </html>
