@@ -4,13 +4,15 @@ A single-file Progressive Web App (PWA) engineered to act as a continuous, livin
 
 Designed to be lightweight enough to run continuously as an ambient wallpaper on a secondary monitor or tablet, it translates live meteorological and astronomical telemetry into a dynamic, 3D-styled glassmorphism environment.
 
-📺 [Watch the Engine Showcase & Real-Time Sunset Transition on YouTube](https://youtu.be/ftTTgyRl8m8)
+📺 [Watch the Engine Showcase & Real-Time Sunset Transition on YouTube](https://youtu.be/UjJrYDRriFU)
+
+🌐 [Launch the Live App](https://bruvic62.github.io/weather-diorama/)
 
 ---
 
 ## ⚙️ The Engineering Architecture
 
-This application was built under a strict self-imposed constraint: **No heavy application frameworks (React/Vue/Angular), no build steps, and zero bloated package managers.**
+This application was built under a strict self-imposed constraint: **No heavy application frameworks (React/Vue/Angular), no build steps, zero package managers, and a single HTML file that runs as-is.**
 
 ### 1. Chronological Rendering Engine
 
