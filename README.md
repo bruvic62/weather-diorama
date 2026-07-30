@@ -1,53 +1,34 @@
-☀️ LiveCast Weather 3D
-A real-time, living 3D ambient weather environment and Progressive Web App (PWA) engineered to act as a continuous, living dashboard. Designed to run as an ambient wallpaper on a secondary monitor or tablet, it translates live meteorological and astronomical telemetry into a dynamic 3D environment.
+# 🌤️ 3D Live Weather Diorama & Ambient Wallpaper
 
-▶️ Watch the Engine Showcase & Real-Time Sunset Transition on YouTube
+A single-file Progressive Web App (PWA) engineered to act as a continuous, living environment. This project is a real-time visual rendering engine built using pure HTML, CSS, and Vanilla JavaScript, paired with lightweight 3D and UI utilities.
 
-⚙️ The Engineering Architecture
-This application was built under a strict self-imposed constraint: No heavy application frameworks (React/Vue/Angular), no build steps (Webpack/Vite), and no Node.js overhead. The environment functions from a single, standalone HTML file.
+Designed to be lightweight enough to run continuously as an ambient wallpaper on a secondary monitor or tablet, it translates live meteorological and astronomical telemetry into a dynamic, 3D-styled glassmorphism environment.
 
-The architecture utilizes targeted tools managed entirely by a custom Vanilla JavaScript brain:
+📺 [Watch the Engine Showcase & Real-Time Sunset Transition on YouTube](https://youtu.be/ftTTgyRl8m8)
 
-1. Chronological Rendering Engine (Pure Vanilla JS)
-The core logic is 100% custom JavaScript. The engine continuously polls the Open-Meteo API for localized telemetry (latitude, longitude, and exact sunrise/sunset timestamps). It calculates the precise percentage of daylight remaining and physically interpolates this data into the DOM, shifting the ambient lighting and sky gradients millisecond by millisecond.
+---
 
-2. Astronomical Mathematics & 3D Environment (Three.js)
-Rather than relying on static image toggles for "day" and "night," the celestial bodies and weather particles are driven by math and 3D rendering via the Three.js library.
+## ⚙️ The Engineering Architecture
 
-The Sun & Moon: Physically track across the 3D viewport, accelerating naturally as they hit the horizon based on real-time sunset/sunrise data.
+This application was built under a strict self-imposed constraint: **No heavy application frameworks (React/Vue/Angular), no build steps, and zero bloated package managers.** 
 
-Weather Systems: Dynamic cloud rendering, rain vectors, and atmospheric lighting adapt instantly to the current local conditions.
+### 1. Chronological Rendering Engine
+The environment does not simply toggle between "day" and "night" modes. The custom Vanilla JS engine polls the [Open-Meteo API](https://open-meteo.com) for localized telemetry (latitude, longitude, exact sunrise/sunset timestamps) and calculates the precise percentage of daylight remaining. This data is physically interpolated into the DOM, dynamically shifting the ambient lighting millisecond by millisecond.
 
-3. High-Performance Glassmorphism UI (Tailwind CSS)
-The data dashboard floating above the 3D space is styled using Tailwind CSS utility classes. By utilizing pure CSS backdrop-filters (backdrop-blur) and calculated drop-shadows, it achieves a frosted glass depth effect. This offloads visual heavy lifting to native CSS rendering, maintaining high performance and preventing system resource drain.
+### 2. Astronomical Mathematics & 3D Environment
+Instead of relying on static image files, celestial bodies and atmospheric weather effects are driven by real-time telemetry and Three.js rendering:
+* **The Sun:** Physically tracks across the viewport, accelerating naturally as it hits the horizon based on real-time sunset data.
+* **The Moon & Sky:** The engine calculates the current astronomical lunar phase and utilizes Three.js to accurately simulate the moon's movement, real-time cloud movement, and dynamic precipitation directly over the viewport.
 
-📊 Live Telemetry & Features
-The dashboard pulls comprehensive, real-time data to update the environment continuously:
+### 3. High-Performance Glassmorphism UI
+The data dashboard floating above the 3D space is styled using Tailwind CSS utility classes. By utilizing native CSS backdrop-filters and calculated drop-shadows to achieve a frosted glass (glassmorphism) depth effect, the application maintains high performance without eating up system resources, preventing screen burn-in and battery drain.
 
-Atmospheric Data: Real-time Humidity, Dew Point, UV Index, Pressure, and Visibility.
+---
 
-Wind Dynamics: Live Wind Speed, Gusts, and Direction (visualized via a custom SVG compass).
+## 🛰️ Tech Stack
 
-Astronomical Tracking: Live Sunrise/Sunset countdowns with a dynamic daylight progress bar, plus Lunar Phase and Illumination tracking.
-
-Forecasting: Today's Precipitation Chance/Amount, an interactive 7-Day Forecast, and a detailed Hourly Panel with dynamic canvas loops.
-
-Timezone Handling: Automatic detection and calculation of the localized time and timezone abbreviations.
-
-🛠️ Tech Stack
-Core Logic & Architecture: Pure HTML5, CSS3, and Vanilla JavaScript (ES6+).
-
-3D Rendering Pipeline: Three.js (imported via CDN).
-
-UI Styling: Tailwind CSS (imported via CDN).
-
-Telemetry Provider: Open-Meteo API.
-
-🚀 Installation & Usage
-Because the application is entirely self-contained with zero dependencies or build steps, it can run on any modern browser right out of the box.
-
-Live Demo:
-Visit the live PWA hosted on GitHub Pages: https://bruvic62.github.io/weather-diorama/
-
-Run Locally:
-Simply clone the repository and open index.html in your preferred browser (like Vivaldi) straight from your Linux terminal. No npm install or local server required.
+* **Core Logic:** Pure HTML5, CSS3, Vanilla JavaScript (ES6+).
+* **Architecture:** Standalone Progressive Web App (PWA).
+* **3D Environment:** Three.js (via CDN).
+* **UI Styling:** Tailwind CSS (via CDN).
+* **Telemetry:** [Open-Meteo API](https://open-meteo.com).
