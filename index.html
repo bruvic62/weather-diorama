@@ -254,19 +254,20 @@ setInterval(() => {
   }
 
   #crestBadge {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    opacity: 0.4;
-    z-index: 20;
-    cursor: default;
-    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease, border-radius 0.4s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  }
+ position: fixed;
+ bottom: 32%;
+ left: 56.5%;
+ transform: translateX(-50%);
+ width: 45px;
+ height: 45px;
+ border-radius: 50%;
+ overflow: hidden;
+ opacity: 0.4;
+ z-index: 20;
+ cursor: default;
+ transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease, border-radius 0.4s ease;
+ box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
   #crestBadge:hover {
     width: 220px;
     height: 280px;
@@ -384,6 +385,77 @@ setInterval(() => {
     height: 100%;
     object-fit: contain;
   }
+
+/* Alternative cleaner glass for stack cards */
+.stat-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.10);
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-left: 2px solid rgba(255,255,255,0.45);
+  border-right: 2px solid rgba(0,0,0,0.55);
+  border-bottom: 2px solid rgba(0,0,0,0.6);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.30),
+    inset 1px 1px 0 rgba(255,255,255,0.28),
+    inset -1px -1px 0 rgba(0,0,0,0.28);
+  overflow: hidden;
+}
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.14), rgba(255,255,255,0.03), transparent 60%);
+  backdrop-filter: blur(8px) brightness(1.18) saturate(1.15) contrast(1.05);
+  -webkit-backdrop-filter: blur(8px) brightness(1.18) saturate(1.15) contrast(1.05);
+  filter: none;
+  z-index: 0;
+  pointer-events: none;
+}
+.stat-card::after {
+  display: none;
+}
+.stat-card > * {
+  position: relative;
+  z-index: 1;
+}
+#hourlyPanel {
+  background: rgba(15, 23, 42, 0.10);
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-left: 2px solid rgba(255,255,255,0.45);
+  border-right: 2px solid rgba(0,0,0,0.55);
+  border-bottom: 2px solid rgba(0,0,0,0.6);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.30),
+    inset 1px 1px 0 rgba(255,255,255,0.28),
+    inset -1px -1px 0 rgba(0,0,0,0.28);
+}
+#hourlyPanel::before {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.14), rgba(255,255,255,0.03), transparent 60%);
+  backdrop-filter: blur(8px) brightness(1.18) saturate(1.15) contrast(1.05);
+  -webkit-backdrop-filter: blur(8px) brightness(1.18) saturate(1.15) contrast(1.05);
+  filter: none;
+}
+#hourlyPanel::after {
+  display: none;
+}
+
+
+
+/* Clean transparent circle for crest badge (resting state) */
+#crestBadge {
+  background: transparent !important;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,0.35) !important;
+}
+#crestBadge img {
+  opacity: 0 !important;
+  transition: opacity 0.35s ease !important;
+}
+#crestBadge:hover img {
+  opacity: 1 !important;
+}
+
 </style>
 </head>
 <body class="text-slate-100 h-screen">
@@ -1816,6 +1888,8 @@ function attachHourCellLoopHover(hours) {
     sidebar.style.display = ambient ? 'none' : '';
     overlay.style.display = ambient ? 'none' : '';
     glassEdge.style.display = ambient ? 'none' : '';
+    const crest = document.getElementById('crestBadge');
+    if (crest) crest.style.display = ambient ? 'none' : '';
     btn.innerHTML = ambient ? eyeOffIcon : eyeIcon;
     btn.title = ambient ? 'Show panels' : 'Hide panels for ambient view';
   });
