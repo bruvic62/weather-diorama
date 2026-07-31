@@ -4,7 +4,7 @@ A single-file Progressive Web App (PWA) engineered to act as a continuous, livin
 
 Designed to be lightweight enough to run continuously as an ambient wallpaper on a secondary monitor or tablet, it translates live meteorological and astronomical telemetry into a dynamic, 3D-styled glassmorphism environment.
 
-📺 [Watch the Engine Showcase & Real-Time Sunset Transition on YouTube](https://youtu.be/UjJrYDRriFU)
+📺 [Watch the Engine Showcase & Real-Time Sunset Transition on YouTube](https://youtu.be/Q_maEQEGIDA)
 
 🌐 [Launch the Live App](https://bruvic62.github.io/weather-diorama/)
 
@@ -25,9 +25,9 @@ Instead of relying on static image files, celestial bodies and atmospheric weath
 * **The Sun:** Physically tracks across the viewport, accelerating naturally as it hits the horizon based on real-time sunset data.
 * **The Moon & Sky:** The engine calculates the current astronomical lunar phase and utilizes Three.js to accurately simulate the moon's movement, real-time cloud movement, and dynamic precipitation directly over the viewport.
 
-### 3. High-Performance Glassmorphism UI
+### 3. Refined Glassmorphism UI
 
-The data dashboard floating above the 3D space is styled using Tailwind CSS utility classes. By utilizing native CSS backdrop-filters and calculated drop-shadows to achieve a frosted glass (glassmorphism) depth effect, the application maintains high performance without eating up system resources, preventing screen burn-in and battery drain.
+The data dashboard floating above the 3D space uses a light, edge-lit glass style — thin beveled borders, subtle inset highlights, and minimal blur — instead of heavy frosted panels. Built with Tailwind CSS utility classes and native CSS backdrop-filters for performance, so it can run as an ambient display without draining resources.
 
 ---
 
